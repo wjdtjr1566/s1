@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박스연습</title>
+    <style>
+   html,body {
+     margin: 0;
+     padding: 0;
+   }
+   .box1 { 
+       width: 100%; height: 100px;
+       background-color: yellow;
+
+   }
+   .box2 { 
+       width: 70%; height: 200px;
+       background-color: lightblue;
+       float: left;
+
+   }
+   .box3 { 
+       width: 30%; height: 200px;
+       background-color: lightgreen;
+      float: left;
+   }
+   .login-box { 
+        width: 300px;
+        height: 220px;
+        background-color: green;
+        border: 1px solid black;
+        margin: 20px;   
+   }
+   .login-box h3 {
+    text-align: center;
+   }
+   .login-box input {
+       width: 90%;
+       height: 30px;
+       margin-left: 5%;
+   }
+    .login-btn {
+        width: 90%;
+        height: 35px;
+        margin: 30px 5%;
+        background-color: white;
+        border: 1px solid black;
+    }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="box1">위 박스</div>
+    <div class="box2">왼쪽 박스</div>
+    <div class="box3">오른쪽 박스</div>
+   
+    <div class="login-box">
+     <h3>로그인</h3>
+    
+    아이디: <input type="text" placeholder="아이디"><br><br>
+    비밀번호:<input type="password" placeholder="비밀번호"><br><br>
+
+    <button class="login-btn">로그인</button>
+    </div>
+    
+</body>
+</html>
