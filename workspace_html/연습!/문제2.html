@@ -5,28 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-      .top { border:1px solid red;
+      #content { 
              background-image: url('https://html5up.net/uploads/demos/tessellate/images/header.jpg');
              height: 500px;
              background-size: cover;
              color: white;
-             
+             overflow: hidden;
+                    
+      }
+      #content .top1 { 
+             height: 300px;
+             border: 1px solid red;
+             width: 500px;
+             margin: 0 auto;
+             margin-top: 100px;
+             font-weight:100;
+             text-align: center;
+      }
+      #content .top1 .div1 {
+          font-size :40px;
+          margin: 30px;
 
+      }
+
+        #content .top1 .div2 {
+          font-size :20px;
+          margin: 30px;
+
+      }
+        .link {
+          border-bottom: 1px dotted white;
+          cursor: pointer;
+
+      }
+      #content .top1 .div3 {
+        border: 1px solid white;
+        border-radius: 5px;
+        width: 250px;
+        height: 50px;
+        line-height: 50px;
+        margin: 25px auto;
+        
+        background-color: rgba(255,255,255,0.2);
+        cursor: pointer;
+
+        
       }
 
     </style>
 </head>
 <body>
-    <div class="top">
+    <div id="content">
     <div class="top1">
         <div class="div1">
             Welcome to Tessellate
         </div>
         <div class="div2">
-            A free responsive site template by HTML5 UP
+            A free responsive site template by <span class="link">HTML5 UP</span> 
         </div>
         <div class="div3">
-            proceed to second phase
+            Proceed to second phase
         </div>
 
     </div>

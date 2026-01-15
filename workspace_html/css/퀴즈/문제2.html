@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+   .큰박스 {
+       height:800px;
+       border: 1px solid red;
+       text-align: center;
+   }
+   .작은박스  {
+       width: 25%;
+       height: 500px;
+       border: 1px solid red;
+       display: inline-block;
+       margin: 20px;
+    
+       padding: 10px;
+   } 
+   
+   .사진 {
+     height: 300px;
+        background-size: contain;
+       background-repeat: no-repeat; 
+       background-position: center;
+   }
+   .사진1 {
+       background-image: url(https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA3MDlfMjEy%2FMDAxNzUyMDUzNzIxOTIz.yFGh2l0DaMsixiFm8GJHK9OW1HkLVz1gt0u_HF7P0TQg.P9twa4tov0x8XLp86m2mkzEqLbkchdCoNwsNhEWTLMcg.JPEG%2FIMG%25A3%25DF6706.JPG&type=a340);
+
+   }
+   .사진2 {  
+       
+       background-image: url(https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxNzA1MzFfMjY5%2FMDAxNDk2MjE2MDA4NTc5.j4eJcARXEbA92YiBMgKaYAokSNPETciuIOoCSUnATOsg.gcaQ0w7MH-pfNbIlEKSJBFGSpG4GHmPq3S3nKYhScsIg.PNG.strongpen%2F%25BD%25C3%25BF%25F8%25C7%25D1%25BA%25B9%25BC%25FE%25BE%25C6%25BE%25C6%25C0%25CC%25BD%25BA%25C6%25BC_%25281%2529.PNG&type=a340);
+
+   }
+   .사진3 { 
+      background-image: url(https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_5814832%2F58148324650.jpg&type=f372_372);
+   }
+    .가격 { 
+        color: red;
+    }
+    .설명 { 
+        display: none;
+        font-size: 13px;
+        margin-top:5px;
+    }
+    .작은박스:hover .설명 { 
+        display: block;
+    }
+
+    
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="큰박스">
+        <h2> 메뉴판</h2>
+        <div class="작은박스">
+            <div class="사진 사진1"></div>
+            
+            <span class="이름">아메리카노</span> <BR>
+            <span class="가격">3500원</span> <BR>
+            <span class="버튼">VIEW</span> <BR>
+            <span class="설명">고급 원두로 만든 아메리카노</span>
+            
+        </div>
+        <div class="작은박스"> 
+            <div class="사진 사진2"></div>
+                <span class="이름">아이스티</span> <BR>
+            <span class="가격">3000원</span> <BR>
+            <span class="버튼">VIEW</span> <BR>
+            <span class="설명">고급 재료로 만든 아이스티</span>
+        </div>
+        <div class="작은박스">
+             <div class="사진 사진3"></div>
+               <span class="이름">아샷추</span> <BR>
+            <span class="가격">4000원</span> <BR>
+            <span class="버튼">VIEW</span> <BR>
+            <span class="설명">고급 아샷추</span>
+        </div>
+      
+        
+
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문제1</title>
+    <style>
+    .큰박스 { 
+        height: 800px;
+        /* border: 1px solid red; */
+    }
+    .작은박스1 {   
+            width: 10%;
+            height: 700px;
+            /* border: 1px solid red; */
+            margin: 20px;
+            display: inline-block;
+    }
+   
+    .작은박스2  { 
+            width: 70%;
+            height: 700px;
+            /* border: 1px solid red; */
+            display: inline-block;
+            margin: 20px;
+            
+    }
+    .사진 { 
+         width: 100px;
+         height: 100px;
+         background-size: cover;
+         background-repeat: no-repeat;
+         background-position: center;
+
+    }
+    .사진1 {background-image:url(https://thumbnail.coupangcdn.com/thumbnails/remote/48x48ex/image/retail/images/2025/07/23/12/1/1b2a4f85-9a71-4737-8513-8f16d11d1ac8.png);
+        
+    }
+    .사진2 {background-image: url(https://thumbnail.coupangcdn.com/thumbnails/remote/48x48ex/image/rs_quotation_api/wcbdcaql/88b2358c4b97491b8515f7592d7bf37c.jpg);}
+
+    .사진3 {
+          background-image: url(https://thumbnail.coupangcdn.com/thumbnails/remote/48x48ex/image/retail/images/446284238753922-a62c5a0a-effb-4889-b0a4-a0fe07f60163.jpg);
+    }
+    .사진4 { 
+              width:500px;
+         height: 700px;
+         background-size: cover;
+         background-repeat: no-repeat;
+         background-position: center;
+         display: none;
+         position:absolute;
+         top:0;
+         left:150px;
+        
+        
+         
+    }
+    .사진5  { 
+        background-image: url(https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/2025/07/23/12/1/1b2a4f85-9a71-4737-8513-8f16d11d1ac8.png);
+       display: block;
+    }
+    .사진6 { 
+        
+        background-image: url(https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/rs_quotation_api/wcbdcaql/88b2358c4b97491b8515f7592d7bf37c.jpg);
+    }
+
+    .사진7 { 
+    
+        background-image: url(https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/446284238753922-a62c5a0a-effb-4889-b0a4-a0fe07f60163.jpg);
+    }
+     .사진1:hover .사진5 {
+         display: block;
+         z-index:1;
+     }
+      .사진2:hover .사진6 { 
+         display: block;
+           z-index:1;
+      }
+         .사진3:hover .사진7 { 
+         display: block;
+           z-index:1;
+      }
+    
+
+
+
+
+    </style>
+</head>
+<body>
+      <div class="큰박스">
+         
+
+        <div class="작은박스1 "> 
+        <div class="사진 사진1">
+             <div class="사진4 사진5"></div>
+        </div>
+        <div class="사진 사진2">
+         <div class="사진4 사진6"></div>
+        </div>
+        <div class="사진 사진3">
+            <div class="사진4 사진7"></div>
+        </div>
+
+        
+       
+
+        </div>
+        <div class="작은박스2"> 
+     
+
+        </div>
+
+
+
+
+
+
+
+
+      </div>
+</body>
+</html>
