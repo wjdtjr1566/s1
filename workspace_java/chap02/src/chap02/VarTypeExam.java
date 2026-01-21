@@ -1,0 +1,198 @@
+package chap02;
+
+public class VarTypeExam {
+
+	public static void main(String[] args) {
+		
+		byte b1;
+		b1 = 127;
+		System.out.println("b1: "+b1);
+//		b1 = 128;
+		
+		char c1 = 65;
+		System.out.println("c1: "+ c1);
+		char c2 = 65 + 2;
+		System.out.println("c2: "+ c2 );
+		char c3 = 'B';  //유일하게 홀따움표를 쓰며 글씨는 하나만 들어감
+		System.out.println("c3 - c1 : "+ (c3-c1)  );
+		
+		// L또는 l을 붙이면 명시적인 long 안 붙이면 int
+        long l1 = 2200000000L;  
+		long l2 = 30;
+		
+		String s1= "강정석";
+		System.out.println("s1: "+ s1);
+		
+		String s2 = "강\"정석\"";
+		System.out.println("s2: "+ s2);
+		
+		String s3 = "\\강\t정\n석";
+		System.out.println("s3 "+ s3);
+	
+	    System.out.println("글씨"+3);
+	    System.out.println("글씨"+3 +2); // 글씨32 
+	    System.out.println("글씨"+(3 +2)); // 글씨5
+	    System.out.println(3+2+"글씨"); //5글씨
+	    
+//	    int a = 3.14; 
+	    
+	    float f1 = 3.14f;
+	    System.out.println("f1: "+f1);
+	    
+	    double d1 = 3.14;
+	    System.out.println("d1: "+ d1 );
+	    
+	    float f2 = 0.1234567890123f;
+	    System.out.println("f2: "+ f2);
+	    // float의 정밀도는 소수점 7자리
+	    
+	    double d2 = 0.12345678901234567890;
+	    System.out.println("d2: " + d2);
+	    // double의 정밀도는 소수점 16자리
+	    
+	    double d3 = 5e3;
+	    System.out.println("d3: " + d3);    
+            	
+	    boolean stop = true;
+	    boolean start = false;
+	    System.out.println("stop: "+ stop);
+	    
+	    
+	    //문제 1 
+	    // 내 나이를 저장합니다. 
+	    int age = 28;
+	    System.out.println("age: "+ age);
+	    
+	    //문제2 
+	    //운전 면허가 있다/ 없다
+	     boolean 면허 = false;
+	     boolean 면허1 = true;
+	     System.out.println("면허: "+ 면허);
+	    	
+	    //문제3 
+	    //우리집에 있는 스마트 폰의 개수
+	     short 폰갯수 = 2;
+	     System.out.println("폰갯수: "+폰갯수);
+	     
+	     
+	    
+	    //문제 4 
+	    // 내 이름 저장 
+	     String 이름 = "강정석";
+	     System.out.println("이름: "+이름);
+	    //문제 5 
+	    // 1평은 3.3제곱미터입니다. 
+        // 5평은 몇 제곱 미터인지 계산해서 저장
+	     double z = 3.3;
+	     System.out.println("5평= "+ z*5);
+	     
+	    //문제 6
+	    // 1-1 : 두 변수 x, y에 각각 숫자를 넣고 
+	    // 출력 결과: "3 > 4 결과는 false 입니다"
+	    System.out.println(3>4);  // false
+	    int x = 3;
+	    int y = 4;
+	    boolean e = x >y ;
+	
+	   System.out.println(x+ ">" +y +"결과는"+ (x>y) +"입니다");
+	   
+	   // 6-2 : x,y 값 바꿔서 정답 나오는지 출력
+	   System.out.println(y+ ">" +x +"결과는"+ (y>x)+ "입니다") ;
+	   
+	   
+	   
+	   /*
+	    *  숫자 149
+	    *  -----------
+	    *  출력 결과
+	    *  "백의 자리 : 1"
+	    *  "십의 자리 : 4"
+	    *  "일의 자리 : 9"	    
+	    */
+//	   int num = 149;
+//	   int n100 =num으로 어떻게 하면 1만 남길지;
+	   
+	   int b =10 / 4;
+	   System.out.println("b: "+ b); // 2
+	   
+	   int c = 149;
+	   
+	   System.out.println("백의 자리 "+  c/100);
+	   System.out.println("십의 자리 "+  (c-(c/100)*100)/10 ); 
+	   System.out.println("일의 자리 "+  (c-(c/100)*100)/10 );
+	   
+	   //문제8
+	   //회식비 43000원
+	   //참석인원 4명
+	   //인당 얼마?
+	   // 8-1 : 디테일하게 원단위까지 
+	   // 8-2 : 만원 단위까지만 받기
+	   // 8-2-1 : 주최자는 얼마 내야 하는가
+	   int 회식비 = 43000;
+	   int 참석인원 = 4;
+	   int money1 = 회식비 / 참석인원;
+	   System.out.println("money1 : "+money1);
+	   int money2 = (money1 / 10000) * 10000;
+	   System.out.println("money2 :"+money2);
+	   int money3 = 회식비 - (money2* (참석인원-1));
+	   System.out.println("money3 :"+money3);
+	   
+	   int d =43000;
+	   System.out.println("디테일하게 원단위" + d/4);
+	   System.out.println("만원단위" + ((d/4)/10000) *10000);
+	   System.out.println("주최자는" + (d-((d/4)/10000*10000)*3));
+	   
+	   //문제9
+	   String left ="오예스";
+	   String right ="사탕";
+	   //뭔가 하기
+	   String 아= left;
+	   left=right;
+	   right=아;
+	   
+	  
+	   System.out.println("left:  "+ left); //사탕
+	   System.out.println("right: "+ right); //오예스
+	   
+	   
+	   
+	   
+	   /*
+	    *  숫자 xyz
+	    *  -----------
+	    *  출력 결과
+	    *  "백의 자리 : x"
+	    *  "십의 자리 : y"
+	    *  "일의 자리 : z"	    
+	    */
+	   
+	   int j = 358;
+	   
+	   
+	   System.out.println("백의 자리 "+ j/100 );
+	   System.out.println("십의 자리 "+ (j - (j/100) * 100 ) /10); 
+	   System.out.println("일의 자리 "+ (j - (j / 10) * 10));
+
+	   /*
+	    *  숫자 abcd
+	    *  -----------
+	    *  출력 결과
+	    *  "천의 자리 : a"
+	    *  "백의 자리 : b"
+	    *  "십의 자리 : c"
+	    *  "일의 자리 : d"	    
+	    */
+	    int a1 = 2555; 
+	   
+	  System.out.println("천의 자리 "+ a1/1000);
+      System.out.println("백의 자리 "+ (a1 - (a1/1000) * 1000) /100);
+      System.out.println("십의 자리 "+ ((a1 - a1/100*100) /10));
+      System.out.println("일의 자리 "+ (a1 - (a1/10) *10));
+	    
+	    
+    
+      
+      
+	}                            
+	    
+}
