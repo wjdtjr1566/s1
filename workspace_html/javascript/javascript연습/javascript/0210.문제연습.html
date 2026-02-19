@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select id="s">
+        <option >16px</option>
+        <option >32px</option>
+        <option >48px</option>
+        <option >64px</option>
+    </select>
+    <div id="d">다람쥐</div>
+    <script>
+        const s = document.querySelector('#s')
+        const d = document.querySelector('#d')
+        // s.addEventListener('click',function(e){
+        //     const size = e.target.textContent
+
+        //     d.style.fontSize = this.value
+        // })
+         s.addEventListener('change', function(e){
+            const size = e.target.value
+            d.style.fontSize= size
+         })
+
+    </script>
+</body>
+
+</html>

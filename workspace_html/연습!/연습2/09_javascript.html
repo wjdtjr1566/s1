@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #go {
+            position: absolute;
+            display: none;
+            border: 1px solid red;
+            width: 100px;
+            height: 100px;
+            top: 0px;
+            left: 0px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="go">
+        <a href="http://google.com">구글</a>
+        <a href="http://naver.com">네이버</a>
+    </div>
+    <script>
+        const a = document.querySelector('#go')
+        window.addEventListener('load', function (evt) {
+
+        })
+        window.addEventListener('contextmenu', function (evt) {
+            evt.preventDefault()
+            a.style.top = evt.pageY + 'px'
+            a.style.left = evt.pageX + 'px'
+            a.style.display = 'block'
+        })
+        window.addEventListener('click', function () {
+            a.style.display = 'none'
+        })
+        window.addEventListener('mousemove', function (evt) {
+            if (a.style.display == 'none') {
+                a.style.top = evt.pageY + 'px'
+                a.style.left = evt.pageX + 'px'
+            }
+        })
+
+
+    </script>
+</body>
+
+
+
+</html>

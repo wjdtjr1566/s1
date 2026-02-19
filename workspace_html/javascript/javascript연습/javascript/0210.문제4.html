@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+     <div class="menu">인기상품순</div> <br>
+     <div class="menu">낮은가격순</div> <br>
+     <div class="menu">높은가격순</div> <br>
+     <div class="menu">신상품순</div> <br>
+
+     <script>
+        const menu = document.querySelectorAll('.menu')
+        // menu[i].addEventListener('click',function(){ // 이렇게 돌면 안됨 
+        // 반복하면서 클릭할떄. 동작해야하기에 
+        //     for(let i =0; i<menu.length; i++) {
+        //         menu[i].style.fontWeight ='100'
+        //     }
+        //     style.fontWeight='700'
+        // })
+        for(let i =0; i<menu.length; i++) {
+           menu[i].addEventListener('click',function() {
+           for (let j =0; j< menu.length; j++) {
+            menu[j].style.fontWeight = '100'
+           }
+                menu[i].style.fontWeight = '700'
+           } 
+        )}
+
+
+     </script>
+</body>
+
+</html>

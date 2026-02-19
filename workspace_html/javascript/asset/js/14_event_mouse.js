@@ -1,0 +1,113 @@
+window.onload = function () {
+    bind()
+}
+
+function bind() {
+    const log = document.querySelector('#log')
+
+    const area = document.querySelector('#area')
+    // 마우스 오른쪽 버튼 막기 
+    area.oncontextmenu = function () {
+        return false;
+
+    }
+    //     area.addEventListener('contextmenu', function() { 
+    //         alert(1)
+    //         return false  // 안먹음 
+    //          추후에 event.preventDafault() 배우면 가능해짐 
+    //     })
+    // }
+    // 마우스로 드래그 방지 근데 영역밖에서 드래그한건 안 막아짐 
+    area.onselectstart = function () {
+        return false;
+    }
+
+    area.addEventListener('dblclick', function () {
+        let div = document.createElement('div')
+        div.innerHTML = '더블클릭 발생'
+        log.prepend(div)
+    })
+    area.addEventListener('mousedown', function () {
+        let div = document.createElement('div')
+        div.innerHTML = 'mousedown 발생'
+        log.prepend(div)
+    })
+    area.addEventListener('mouseup', function () {
+        let div = document.createElement('div')
+        div.innerHTML = 'mouseup 발생'
+        log.prepend(div)
+    })
+    area.addEventListener('click', function (evt) {
+        // let div = document.createElement('div')
+        // div.innerHTML = 'click 발생'
+        // log.prepend(div)
+
+        /*
+            offset : *DOM 좌상단 기준
+            page   : *스크롤에 관련없이 문서좌상단 기준
+
+            client : 지금 보이는 화면 좌상단 기준 
+            screen : 모니터 기준 
+        */
+        console.log('evt.offsetY', evt.offsetY)
+        console.log('evt.pageY', evt.pageY)
+        // console.log ('clientY',evt.clientY)
+        // console.log ('screenY',evt.screenY)
+
+        showLog('click발생')
+
+
+    })
+    area.addEventListener('mouseover', function () {
+        showLog('mouseover 발생')
+        area.style.backgroundColor = 'yellow'
+    })
+    // area.addEventListener('mouseleave', fuction() {})
+    area.addEventListener('mouseout', function () {
+        showLog('mouseout 발생')
+        area.style.backgroundColor = 'white'
+    })
+    area.addEventListener('mousemove', function (evt) {
+        const offsetX = evt.offsetX
+        const offsetY = evt.offsetY
+        showLog(`offsetX :${offsetX}, offsetY : ${offsetY}`)
+        // area.style.backgroundColor = 'white'
+    })
+
+    document.querySelector('body')
+        .addEventListener('mousemove', function (evt) {
+            const cursor = document.querySelector('#cursor')
+            cursor.style.left = evt.pageX + ("px")
+            cursor.style.top = evt.pageY + ("px")
+        })
+
+    document.querySelector('body')
+        .addEventListener('mousemove', function (evt) {
+            // 마우스 따라다니는 코드
+            // 단, 마우스를 눌렀을 때 만 
+            if (isDrag) { 
+                let drag = document.querySelector('#drag')
+                drag.style.top =(evt.pageY - drag_offset_y) + 'px'
+                drag.style.left = (evt.pageX - drag_offset_x) + 'px'
+            }
+        })
+    document.querySelector('#drag')
+        .addEventListener('mousedown', function (evt) {
+            isDrag = true
+            drag_offset_x = evt.offsetX
+            drag_offset_y = evt.offsetY
+        })
+    document.querySelector('#drag')
+        .addEventListener('mouseup', function () {
+            isDrag = false;
+        })
+}
+let isDrag = false;
+let drag_offset_x = 0;
+let drag_offset_y = 0;
+
+function showLog(msg) {
+    let div = document.createElement('div')
+    div.innerHTML = msg
+    log.prepend(div)
+}

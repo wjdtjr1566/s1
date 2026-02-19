@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body> 
+    <h1> 할일 목록 관리 시스템</h1>
+    <input id="t" type="text"> <button id="add">추가</button>
+    <input type="checkbox" id="all"> 전체 선택
+    <button id="delete"> 선택 삭제</button>
+    <div id="q6"></div>  
+    <script>
+        // html 요소들 가져옴 
+        const add = document.querySelector('#add')
+        const t = document.querySelector('#t')
+        const q6 = document.querySelector('#q6')
+        const all = document.querySelector('#all')
+        const del =document.querySelector('#delete')
+        add.addEventListener('click', function () { // 추가 버튼 누르면 아래에 추가되게 
+            // q6.innerHTML += '<br>' + t.value
+            const value = t.value
+            if (value === '') return;
+            const div = document.createElement('div') // 가상의 div 
+            // div.style.border = "1px solid red"
+            const checkbox = document.createElement('input') // 가상의 input을 생성후 
+            checkbox.className = 'name' 
+            checkbox.type = 'checkbox'      // 타입을 checkbox로 정하고
+            const span = document.createElement('span') // 가상의 span
+            span.textContent = value    // span에 입력할 할일 text 
+            const btn2 = document.createElement('button') // 가상의 버튼2 만들기
+            btn2.textContent = '삭제'   // 거기엔 삭제라고 적히게 
+            checkbox.addEventListener('click', function () {
+                // 
+                const total = document.querySelectorAll('.name').length
+                const checked = document.querySelectorAll('.name:checked').length
+                if (total == checked) {
+                    all.checked = true
+                } else {
+                    all.checked = false
+
+                }
+                if (checkbox.checked) {   //체크박스가 체크되어있다면
+                    span.style.textDecoration = 'line-through'
+                } else {
+                    span.style.textDecoration = 'none'
+                }
+                
+               
+            })
+
+
+            btn2.addEventListener('click', function () { // 삭제를 클릭하면
+                div.remove()    // div 이벤트 제거 
+            })
+
+            div.append(checkbox) //가져오기
+            div.append(span)
+            div.append(btn2)
+            q6.append(div) // 화면에 보이도록.. 
+            // t.value=''
+
+        })
+
+        all.addEventListener('click', function () {
+            const checks = document.querySelectorAll('#q6 input[type="checkbox"]')
+            for (let i = 0; i < checks.length; i++) {
+                checks[i].checked = all.checked
+            }
+
+        })
+        del.addEventListener('click',function(){
+            const name2 = document.querySelectorAll('.name') 
+            for(let i=0; i<name2.length; i++) {
+                if(name2[i].checked) {
+                    name2[i].parentNode.remove() 
+                }
+            }
+        })
+        
+    </script>
+</body>
+
+</html>

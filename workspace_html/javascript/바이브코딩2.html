@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Stick Tekken</title>
+<style>
+body{margin:0;background:black;color:white;font-family:sans-serif;overflow:hidden}
+canvas{display:block;margin:auto;background:#111}
+#selectScreen{
+position:absolute;
+width:100%;height:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+background:black;
+}
+button{padding:10px 20px;margin:10px;font-size:18px;}
+</style>
+</head>
+<body>
+
+<div id="selectScreen">
+<h1>캐릭터 선택</h1>
+<button onclick="startGame('speed')">⚡ 스피드형</button>
+<button onclick="startGame('balance')">🧠 밸런스형</button>
+<button onclick="startGame('power')">💪 파워형</button>
+</div>
+
+<canvas id="game" width="900" height="500"></canvas>
+
+<script>
+const canvas=document.getElementById("game");
+const ctx=canvas.getContext("2d");
+const selectScreen=document.getElementById("selectScreen");
+
+let stage=1;
+let gameOver=false;
+let cutsceneTimer=0;
+
+let player,enemy;
+
+function createPlayer(type){
+let base={
+x:200,y:350,w:40,h:80,
+vx:0,vy:0,
+hp:100,
+maxHp:100,
+gauge:0,
+attacking:false,
+state:"idle",
+guard:false,
+superArmor:false,
+rage:false
+};
+
+if(type==="speed"){base.speed=6;base.power=8;}
+if(type==="balance"){base.speed=5;base.power=10;}
+if(type==="power"){base.speed=4;base.power=14;}
+
+return base;
+}
+
+function spawnEnemy(){
+enemy={
+x:650,y:350,w:40,h:80,
+vx:0,vy:0,
+hp:100+stage*20,
+maxHp:100+stage*20,
+speed:2+stage*0.5,
+power:8+stage*2,
+attacking:false,
+state:"idle",
+superArmor:false,
+rage:false
+};
+}
+
+function startGame(type){
+selectScreen.style.display="none";
+player=createPlayer(type);
+spawnEnemy();
+requestAnimationFrame(update);
+}
+
+function drawStick(f,color){
+ctx.strokeStyle=color;
+ctx.lineWidth=3;
+ctx.beginPath();
+ctx.arc(f.x+20,f.y,15,0,Math.PI*2);
+ctx.moveTo(f.x+20,f.y+15);
+ctx.lineTo(f.x+20,f.y+55);
+ctx.moveTo(f.x+5,f.y+30);
+ctx.lineTo(f.x+35,f.y+30);
+ctx.moveTo(f.x+20,f.y+55);
+ctx.lineTo(f.x+5,f.y+80);
+ctx.moveTo(f.x+20,f.y+55);
+ctx.lineTo(f.x+35,f.y+80);
+ctx.stroke();
+}
+
+function drawUI(){
+ctx.fillStyle="red";
+ctx.fillRect(50,30,300,20);
+ctx.fillRect(550,30,300,20);
+
+ctx.fillStyle="lime";
+ctx.fillRect(50,30,(player.hp/player.maxHp)*300,20);
+ctx.fillRect(550,30,(enemy.hp/enemy.maxHp)*300,20);
+
+ctx.fillStyle="cyan";
+ctx.fillRect(50,60,player.gauge*3,10);
+
+ctx.fillStyle="white";
+ctx.fillText("Stage "+stage,420,30);
+}
+
+function collide(a,b){
+return a.x<a.x+b.w &&
+a.x+a.w>b.x &&
+a.y<b.y+b.h &&
+a.y+a.h>b.y;
+}
+
+function hit(attacker,target,damage){
+let counter = target.attacking && !target.superArmor;
+
+if(counter){
+damage*=1.5;
+}
+
+if(!target.guard || attacker.state==="grab"){
+target.hp-=damage;
+}
+
+if(attacker===player) player.gauge=Math.min(100,player.gauge+5);
+if(target===player) player.gauge=Math.min(100,player.gauge+3);
+
+if(target.hp<target.maxHp*0.3) target.rage=true;
+}
+
+function enemyAI(){
+if(stage===5){
+if(Math.random()<0.03){
+enemy.attacking=true;
+enemy.superArmor=true;
+setTimeout(()=>{enemy.attacking=false;enemy.superArmor=false},600);
+}
+}else{
+if(Math.random()<0.02){
+enemy.attacking=true;
+setTimeout(()=>enemy.attacking=false,300);
+}
+}
+
+if(enemy.x>player.x+50) enemy.x-=enemy.speed;
+if(enemy.x<player.x-50) enemy.x+=enemy.speed;
+}
+
+function update(){
+ctx.clearRect(0,0,900,500);
+
+if(gameOver){
+ctx.fillStyle="white";
+ctx.font="50px Arial";
+ctx.fillText("GAME OVER",300,250);
+return;
+}
+
+if(cutsceneTimer>0){
+ctx.fillStyle="yellow";
+ctx.font="40px Arial";
+ctx.fillText("STAGE "+stage,350,250);
+cutsceneTimer--;
+requestAnimationFrame(update);
+return;
+}
+
+drawUI();
+drawStick(player,player.rage?"orange":"cyan");
+drawStick(enemy,enemy.rage?"red":"orange");
+
+enemyAI();
+
+if(player.attacking && Math.abs(player.x-enemy.x)<60){
+hit(player,enemy,player.power);
+}
+
+if(enemy.attacking && Math.abs(enemy.x-player.x)<60){
+hit(enemy,player,enemy.power);
+}
+
+if(enemy.hp<=0){
+stage++;
+if(stage>5){
+ctx.fillStyle="gold";
+ctx.font="50px Arial";
+ctx.fillText("YOU WIN!",300,250);
+return;
+}
+spawnEnemy();
+cutsceneTimer=120;
+}
+
+if(player.hp<=0){
+gameOver=true;
+}
+
+requestAnimationFrame(update);
+}
+
+document.addEventListener("keydown",e=>{
+if(e.key==="ArrowLeft") player.x-=player.speed;
+if(e.key==="ArrowRight") player.x+=player.speed;
+
+if(e.key==="a"){
+player.attacking=true;
+player.state="punch";
+setTimeout(()=>player.attacking=false,200);
+}
+
+if(e.key==="s"){
+player.attacking=true;
+player.superArmor=true;
+player.state="kick";
+setTimeout(()=>{player.attacking=false;player.superArmor=false},400);
+}
+
+if(e.key==="d"){
+player.attacking=true;
+player.state="grab";
+setTimeout(()=>player.attacking=false,300);
+}
+
+if(e.key==="f"){
+player.guard=true;
+}
+
+});
+
+document.addEventListener("keyup",e=>{
+if(e.key==="f") player.guard=false;
+});
+</script>
+</body>
+</html>

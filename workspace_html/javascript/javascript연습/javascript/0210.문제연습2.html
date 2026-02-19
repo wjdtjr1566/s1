@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        아이디: <input type="text" id="id"> <span id="i"></span> <br> 
+        비밀번호: <input type="password" id="pw"><span id="p"></span> <br> 
+        <br>
+        <input type="button" id="login" value="로그인"> <br>
+        값 <input type="text" id="a">  
+          <input type="button" id="b" value="저장">
+          <span id="c"></span> <br>
+        값 <input type="text" id="e">
+        <div id="result"></div>
+       
+    </div>
+    <script>
+        const id = document.querySelector('#id')
+        const pw = document.querySelector('#pw')
+        const login = document.querySelector('#login')
+        const i = document.querySelector('#i')
+        const p = document.querySelector('#p')
+        login.addEventListener('click',function(){
+             p.innerHTML = ''
+             i.innerHTML = ''
+            if(id.value =='') {
+                i.innerHTML= 'id를 입력하세요'
+            } else if (pw.value=='' ) {
+                 p.innerHTML= 'pw를 입력하세요'
+            } else {
+                 alert ('success html')
+            }
+        })
+
+        const a =document.querySelector('#a')
+        const b =document.querySelector('#b')
+        const c =document.querySelector('#c')
+        b.addEventListener('click',function(){
+            c.innerHTML+= '<br>' + a.value 
+        })
+        const e =document.querySelector('#e')
+        const result =document.querySelector('#result')
+        e.addEventListener('keyup',function(event){
+            if(event.keyCode == 13) {
+                result.innerHTML=''
+
+                const value = e.value
+
+                for(let i = 1; i<= value.length; i++) {
+                    result.innerHTML+= value.slice(0,i) + '<br>'
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

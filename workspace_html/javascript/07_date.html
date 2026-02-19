@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const now = new Date();
+        console.log(now)
+
+        // 년
+        const y = now.getFullYear()
+        console.log('년 :',y)
+
+        // 월(0~11) 주의! 
+        const M = now.getMonth();
+        console.log ('월 :' , M+1)
+        
+        // 일
+        const d = now.getDate();
+        console.log ('일 :' , d)
+        
+        // 요일 (일0~ 토6)
+        const w = now.getDay();
+        console.log ('요 :' , w)
+
+        // 시간
+        const h = now.getHours();
+        console.log ('시간 :' , h)
+
+         // 분
+        const m = now.getMinutes();
+        console.log ('분 :' , m)
+
+         // 초
+        const s = now.getSeconds();
+        console.log ('초 :' , s)
+
+        const iso =now.toISOString() // ISO 8601 형식 문자열로 반환 
+        console.log(iso) //2026-02-05T10:44:33.863Z
+        const arr = iso.split('T')  // T를 기준으로 split
+        console.log(arr)
+        console.log(arr[0])
+
+        const timestamp = now.getTime() //getTime은 1970년 기준으로 지금까지 흐른 시간
+        console.log(timestamp)
+        
+        let before = new Date().getTime() // 시작 시간을 저장
+        for (let i=0; i<100; i++){
+            console.log(1)
+        }
+        let after = new Date().getTime() // 끝난 시간 저장 
+        console.log('after-before',after-before) // 실행에 얼마나 걸렸는지 확인 
+
+        let time = new Date('2026-03-27')
+        console.log (time.toISOString() )
+
+        let now2 = new Date()
+        console.log (now2.toISOString() )
+        console.log(now2.getHours()  )
+        now2.setHours( now2.getHours()  + 9) // 현재 시간에서 9시간 더함 한국시간 보정을 위함 
+        console.log (now2.toISOString() )
+    
+        
+
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

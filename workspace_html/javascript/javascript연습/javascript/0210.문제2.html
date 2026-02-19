@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    피자주문
+    <select>
+        <option value="치즈">치즈피자</option>
+        <option value="불고기">불고기피자</option>
+        <option value="페페로니">페페로니피자</option>
+        <option value="콤비">콤비네이션피자</option>
+    </select> <br><br>
+    사이즈 선택
+    <input type="radio" name="size" value="18000">small
+    <input type="radio" name="size" value="20000">medium
+    <input type="radio" name="size" value="22000">large <br><br>
+    도우 엣지 선택
+    <input type="radio" name="dow">thin(0)
+    <input type="radio" name="dow">치즈(0)
+    <input type="radio" name="dow">고구마(0)
+    <input type="radio" name="dow">에그타르트(0) <br><br>
+    토핑 선택
+    <input type="checkbox" class="토핑" value="2000">감자(2000)
+    <input type="checkbox" class="토핑" value="2000">고구마(2000)
+    <input type="checkbox" class="토핑" value="5000">새우(5000)
+    <input type="checkbox" class="토핑" value="3000">베이컨(3000)
+    <input type="checkbox" class="토핑" value="500">파인애플(500)
+    <input type="checkbox" class="토핑" value="1000">페퍼로니(1000) <br><br>
+    <input type="button" id="확인" value="총액"> <br><br>
+    <input type="button" id="확인2" value="선택내역과 총액"> <br><br>
+    <script>
+        const pizza = document.querySelector('select') // 피자 종류
+        const size = document.querySelectorAll('input[name="size"]') // 피자 사이즈
+        const dow = document.querySelectorAll('input[name="dow"]')  // 피자 도우 엣지선택
+        const topping = document.querySelectorAll('.토핑') //토핑선택
+        const btn = document.querySelector('#확인') // 총액 출력 창 
+        const btn2 =document.querySelector('#확인2') // 선택내역과 총액출력
+        btn.addEventListener('click', function () {
+            let total = 0
+            // 문제 2-2를 풀려면 선택내역을 저장하는 변수가 필요해
+            let save = ""
+            // total += Number(pizza.value) // 이거 피자 벨류를 
+            // "치즈" 이래놔서 NaN 나와서 주석처리함 
+            for (let i = 0; i < size.length; i++) { // 사이즈 계산 
+                if (size[i].checked) {
+                    total += Number(size[i].value)
+                    
+                }
+            }
+            for (let i = 0; i < topping.length; i++) {
+                 if (topping[i].checked) {
+                     total += Number(topping[i].value) 
+                    
+                    } }
+             console.log('총 금액은 :',total)
+             alert("총 금액은" + total + "원 입니다")
+            
+        })
+
+        
+
+
+
+
+    </script>
+</body>
+
+</html>

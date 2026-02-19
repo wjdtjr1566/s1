@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 안내 메시지를 빨간색으로  */
+        #span { 
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        아이디: <input type="text" id="id"><br>
+        비밀번호: <input type="password" id="pw"><br>
+        <br>
+        <input type="button" id="login" value="로그인"> <br>
+        <span id="span"></span>
+    </div>
+    <script>
+        const id = document.querySelector('#id')
+        const pw = document.querySelector('#pw')
+        const login = document.querySelector('#login')
+        const sp =document.querySelector('#span')
+        login.addEventListener('load',function(){
+
+        })
+        login.addEventListener('click',function(){
+            if(id.value.trim()==''&& pw.value.trim() == '') {  // 아이디 비밀번호 둘다 비어있을떄
+                sp.innerHTML+= '아이디와 비밀번호를 입력해주세요<br>' 
+            } else if (id.value.trim()=='' && pw.value.trim()!='') { // 아이디만 비었을 때
+                sp.innerHTML+= '아이디를 입력해주세요<br>'
+            } else if (pw.value.trim() == '' &&id.value.trim()!='') { // 비밀번호만 비어있을때
+                sp.innerHTML+= '비밀번호를 입력해주세요<br>'
+            } else {
+                sp.innerHTML+= ''
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>

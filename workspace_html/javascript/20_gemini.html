@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // AIzaSyDmyhkR-vsQofseRlw4Re-o4yO3lTe-bSU
+        // "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent"
+        const data = {
+            "contents": []
+        }
+        window.addEventListener('load', function () {
+            gemini();
+        })
+
+        function gemini() {
+            const ask = document.querySelector('#ask')
+            ask.addEventListener('click', function () {
+                const prompt = document.querySelector('#prompt').value
+                console.log(prompt)
+
+                const key = 'AIzaSyDmyhkR-vsQofseRlw4Re-o4yO3lTe-bSU'
+                const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent'
+
+                const xhr = new XMLHttpRequest()
+                xhr.open('post', url)
+
+                xhr.setRequestHeader('x-goog-api-key', key)
+                xhr.setRequestHeader('Content-Type', 'application/json')
+
+                const data = {
+                    "contents": [{
+                        "parts": [{
+                            "text": prompt
+                        }]
+                    }
+                    ]
+                }
+                xhr.send(JSON.stringify(data))
+
+                xhr.onload = function () {
+                    console.log(xhr.responseText)
+                    //  console.log(xhr.responseText.candidates.content.parts.text)
+                }
+
+            })
+
+            const ask2 = document.querySelector('#ask2')
+            ask2.addEventListener('click', function () {
+                const prompt = document.querySelector('#prompt').value
+                console.log(prompt)
+
+                const key = 'AIzaSyDmyhkR-vsQofseRlw4Re-o4yO3lTe-bSU'
+                const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent'
+
+                const xhr = new XMLHttpRequest()
+                xhr.open('post', url)
+
+                xhr.setRequestHeader('x-goog-api-key', key)
+                xhr.setRequestHeader('Content-Type', 'application/json')
+
+                data.contents.push({
+                    "role": 'user',
+                    "parts": [{
+                        "text": prompt
+                    }]
+                })
+
+                xhr.send(JSON.stringify(data))
+
+                xhr.onload = function () {
+                    console.log(xhr.responseText)
+                    data.contents.push({
+                        "role": 'model',
+                        "parts": [{
+                            "text": xhr.responseText
+                        }]
+                    })
+                    const a = JSON.parse(xhr.responseText)
+                    const answer = document.querySelector('#answer')
+                    console.log(a)
+                    answer.innerHTML += a.candidates[0].content.parts[0].text
+                }
+
+            })
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <textarea id="prompt"></textarea>
+    <br> <input type="button" id="ask" value="질문하기">
+    <br> <input type="button" id="ask2" value="멀티턴">
+    <div id="answer"></div>
+
+
+</body>
+
+</html>

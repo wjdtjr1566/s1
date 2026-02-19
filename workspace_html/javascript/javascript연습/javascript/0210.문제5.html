@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .small {
+            border: 1px solid red;
+            width: 100px;
+            height: 100px;
+        }
+
+        .big {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display:none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 작은이미지 -->
+    <!-- <div class="a">  //주석한 부분은 만들고나서 쓸모없는부분 주석처리함 -->
+    <!-- <div> -->
+    <img src="http://116.36.205.25:5173/uploads/1770608817346_d0289182-4c2d-4e95-8f0f-ec18d12d779e.png" class="small">
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- 큰 이미지 -->
+    <!-- <div class="c"> -->
+    <img src="http://116.36.205.25:5173/uploads/1770608817346_d0289182-4c2d-4e95-8f0f-ec18d12d779e.png" class="big">
+
+    <!-- </div>  -->
+    <script>
+        const small = document.querySelector('.small')
+        const big = document.querySelector('.big')
+        
+        small.addEventListener('mousemove', function (evt) {
+            big.style.display = 'block'
+            big.style.left = evt.pageX + 100 +"px"
+            big.style.top = evt.pageY + 100 + "px"
+        })
+        small.addEventListener('mouseout', function () {
+            big.style.display = 'none'
+
+        })
+    </script>
+</body>
+
+</html>

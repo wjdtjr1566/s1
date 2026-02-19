@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2> 주문정보</h2>
+    이름: <input type="text" id="order"><br>
+    주소: <input type="text" id="add"><br><br>
+
+    <input type="checkbox" id="btn" > 주문 정보 = 배송정보
+    <h2> 배송정보 </h2>
+    이름: <input type="text" id="order2"><br>
+    주소: <input type="text" id="add2"><br><br>
+
+    <script>
+        const btn = document.querySelector('#btn')
+        const order = document.querySelector('#order')
+        const add = document.querySelector('#add')
+        const order2 = document.querySelector('#order2')
+        const add2 = document.querySelector('#add2')
+        btn.addEventListener('change',function(){
+            if (btn.checked) {
+                order2.value = order.value
+                add2.value = add.value
+            } else {
+                order2.value = ""
+                add2.value =""
+            }
+        })
+    </script>
+</body>
+
+</html>

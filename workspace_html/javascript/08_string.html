@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const str = "옳거니 네가 나를 알아보누나"
+
+        console.log(str[0])
+        // length
+        // 문자열의 길이
+        console.log('str.length :', str.length)
+
+        // indexOf 
+        // 동일한 글씨가 있는지 확인
+        // 있으면 : 첫 글자의 index 반환
+        // 없으면 : -1 반환 
+        console.log('str.indexOf("누나")', str.indexOf('누나'))
+        console.log('str.indexOf("형아")', str.indexOf('형아'))
+
+        // replace
+        // 첫번째 전달인자를 두번째 전달인자로 바꿔준다
+        // 단, 처음 만나는 것만 바꿔준다 
+        let str2 = str.replace('나', '너')
+        console.log('str :', str)
+        console.log('str2 :', str2)
+
+        // 정규표현식을 이용하여 전체 바꾸는 방법
+        str2 = str.replace(/나/g, '너')
+        console.log('str2 :', str2)
+
+        // slice ( 시작index, 끝index)
+        // 시작index부터 끝index 바로 앞까지 복사 
+        str2 = str.slice(4, 6)
+        console.log('str :', str)
+        console.log('str2 :', str2)
+
+        // split
+        str2 = str.split(' ')
+        console.log('str2 :', str2)
+
+        // substr
+        // 시작 index, count
+        str2 = str.substr(4, 2)
+        console.log('str2 :', str2)
+
+        // substring
+        // 시작idx, 끝index 바로 앞 
+        str2 = str.substring(4, 6)
+        console.log('str :', str)
+        console.log('str2 :', str2)
+
+        // trim 
+        let str3 = "    1 2  3     ";  
+        str2 = str3.trim()
+        console.log(`[${str2}]`)
+
+        // 문제1
+        // 어떤 이메일이라도 id를 출력해보자
+        // study.todair@gmail.com
+
+        let str4 = "wjdtjr1566@naver.com"
+        let str5 =str4.split('@')
+        console.log ('id는 :', str5[0])
+
+        // indexOf
+        // 처음부터 @ 바로 앞까지 추출
+        let idx1 = str4.indexOf('@')
+        id = str4.substring(0,idx1)
+        console.log( 'id는 :',id)
+
+
+
+
+        // 문제2 
+        // 보안상 이메일의 앞 두자리를 제외하고 * 처리 
+        // todair@naver.com >> to****@naver.com
+        let str6 =  "wjdtjr1566@naver.com"
+        console.log (str6) 
+        let str_5 = str6.split("@"); 
+        // length의 길이를 뽑고 
+        // 두글자를 뽑고 
+        // console.log (str_7)  앞 두글자 뽑음 
+        // 2글자뺴고 별표로 찍는다 length-2 
+        // *를 + 반복하면서 붙여? 
+        
+        let str_7 = str_5[0].substr(0,2) // wj를 뽑는 코드 
+        console.log(str_7); // wj
+        // console.log( str5[0].length) wjdtjr1566의 length = 10  
+        for ( let i =0; i< str_5[0].length-2; i++) {
+            str_7 = str_7+ "*"
+        }  
+        let result =str_7 + "@" +str_5[1];
+        console.log(result);
+
+        // 선생님 풀이 
+        // let q2 ="todair@naver.com"
+        // let show = q2.substr(0,2)
+        // let company = q2. substring(q2.indexOf('@'))
+        // console.log (show.company)
+
+        // padStart , padEnd 있지만 안 배움
+        // ID길이 -2 만큼 *을 쌓아감 
+
+        // q2.split['@'][0].length-2
+        // let masking = ""
+        // for (let i = 0; i<q2.split['@'][0].length-2; i++) {
+        //  masking += "*"
+        //}
+        // let a2 = show + masking + company 
+        // console.log (a2)
+
+
+       
+
+        // 문제3
+        // 인터넷 주소 중에서 2차 도메인 출력
+        // comic.naver.com >> naver 
+        // human.or.kr >> or 
+        let str7 = "job.human.or.kr"
+        str8 = str7.split('.')
+        console.log ( str8[str8.length-2])
+
+        // 문제4
+        // 네이버 검색 url의 query string에서 검색어를 출력한다
+        // HINT : query=옆에있는 단어 
+        // https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=1234&ackey=po4zpvmy
+        // >> 1234
+        
+        let str9 = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=1234&ackey=po4zpvmy "
+        console.log (str9)
+        // query= 앞뒤로 나누기 
+        let str10 =str9.split('query=')
+        console.log (str10[1]) // 이러면 query = 뒤에 나옴 
+        let str11 = str10[1].split('&')
+        console.log (str11[0])  // 1234 
+
+        const idx = str9.indexOf('query=') + 'query='.length
+        console.log(idx)    // query의 첫번쨰 문자의 idx 
+        const sub = str9.substring(idx)
+        console.log(sub)
+        const sub2 = sub.indexOf('&')
+        console.log (sub2)
+        const sub3 = sub.substring(0,sub2)
+        console.log (sub3)
+
+        // 문제 5 
+        // "2026-02-05 09:14:38"
+        // 월, 분을 출력하시오 
+        const a =  "2026-02-05 09:14:38"
+        const 월 = a.split('-')
+        const 분 = a.split(":")
+        console.log('월 :',월[1])
+        console.log('분 :',분[1])
+
+      
+        
+
+        // 문제 6 
+        // "   abc  "
+        // 공백의 개수는? 
+        // 풀이1 좋지 않음.
+        // const b =  "   abc  "
+        // const c = b.split ("abc")
+        // console.log ( '공백의 개수는 :',c[0].length+ c[1].length)
+         
+        // 강사님 풀이 
+       let q6 = "   abc  " 
+       const d =q6.length - q6.trim().length
+       console.log (d)
+       const e = q6.trim().length
+        console.log (e)
+
+
+
+
+
+       
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
