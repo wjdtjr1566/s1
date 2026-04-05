@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div id="result"></div>
+	<script>
+		fetch("/proj02_request/req")
+		.then(function(response) {
+			return response.json();
+		})
+		.then(function (json) {
+			console.log(json)
+		 document.querySelector('#result').innerHTML = "값: " + json.key
+		});
+		
+	
+	
+	
+	</script>
+</body>
+</html>

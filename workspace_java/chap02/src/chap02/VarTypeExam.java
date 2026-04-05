@@ -119,7 +119,7 @@ public class VarTypeExam {
 	   
 	   System.out.println("백의 자리 "+  c/100);
 	   System.out.println("십의 자리 "+  (c-(c/100)*100)/10 ); 
-	   System.out.println("일의 자리 "+  (c-(c/100)*100)/10 );
+	   System.out.println("일의 자리 "+  (c-(c/10)*10) );
 	   
 	   //문제8
 	   //회식비 43000원

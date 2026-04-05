@@ -1,0 +1,8 @@
+package controller;
+
+import java.util.List;
+
+public interface EmpService {
+	
+	List getEmpno();
+}

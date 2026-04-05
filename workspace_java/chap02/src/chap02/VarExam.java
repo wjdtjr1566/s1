@@ -37,9 +37,9 @@ public class VarExam {
 		   {
 			 System.out.println("y: "+ y);
 		   }
+		   System.out.println(x+y);
 		   		}
 //		 System.out.println("y: "+ y);
-		
 		
 	}    
 }
