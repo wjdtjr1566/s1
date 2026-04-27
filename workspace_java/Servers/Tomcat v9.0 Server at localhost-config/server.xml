@@ -163,7 +163,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       
-      <Context docBase="spring1_hello" path="/human" reloadable="false" source="org.eclipse.jst.jee.server:spring1_hello"/><Context docBase="spring0_test" path="/human0" reloadable="false" source="org.eclipse.jst.jee.server:spring0_test"/><Context docBase="spring2_IoC_DI" path="/human2" reloadable="false" source="org.eclipse.jst.jee.server:spring2_IoC_DI"/></Host>
+      <Context docBase="spring1_hello" path="/human" reloadable="false" source="org.eclipse.jst.jee.server:spring1_hello"/><Context docBase="spring3_model" path="/human3" reloadable="false" source="org.eclipse.jst.jee.server:spring3_model"/></Host>
     </Engine>
   </Service>
 </Server>

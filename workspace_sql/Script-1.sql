@@ -1247,6 +1247,118 @@ SELECT * FROM emp;
 
 COMMIT;
 
+CREATE TABLE todo (
+	todo_id NUMBER PRIMARY KEY,
+	duedate DATE,       
+	done NUMBER DEFAULT 0,
+	content varchar2(4000),
+	ctime DATE 
+);
+
+CREATE SEQUENCE seq_todo;
+
+INSERT INTO todo (todo_id, duedate, done, content, ctime)
+VALUES(seq_todo.nextval, NULL, 0, '칭찬', sysdate);
+
+INSERT INTO todo (todo_id, duedate, done, content, ctime)
+VALUES(seq_todo.nextval, NULL, 0, '쇼핑', sysdate);
+
+SELECT * FROM todo;
+
+COMMIT;
+
+SELECT * FROM todo 
+WHERE todo_id =3;
+
+UPDATE todo
+SET content = '바보' , done = '1' 
+WHERE todo_id =2;
+SELECT * FROM todo;
+
+SELECT * FROM EMP;
+
+
+CREATE TABLE join_ (
+	id	varchar2(40)	NOT NULL,
+	password	varchar2(100)	NULL,
+	address	varchar2(300)	NULL,
+	phonenumber	varchar2(50) NULL,
+	age	number(3)	NULL,
+	name	varchar2(40)	NULL
+);
+
+INSERT INTO join_ (id, password, address, phonenumber, age, name)
+VALUES('asdf1234', 'asdf1234', '천안시', 01012341234, 29,'강정석');
+
+ALTER TABLE join_ ADD CONSTRAINT PK_JOIN PRIMARY KEY (
+	id
+);
+SELECT * FROM JOIN_;
+
+-- 실행 순서 
+/* 5 */SELECT job, 1 AS cnt
+/* 1 */FROM emp
+/* 2 */WHERE sal> 1000
+/* 3 */GROUP BY job
+/* 4 */HAVING count(*) >=3
+/* 6 */ORDER BY cnt DESC;
+
+SELECT * FROM (
+SELECT rownum AS rnum, e.* FROM (
+   SELECT emp.* FROM EMP
+   ORDER BY hiredate
+	) e
+)
+WHERE rnum >= 3 AND rnum <= 7;
+--WHERE rnum BETWEEN 3 AND 7; 둘중 하나 쓰면 됨 
+
+SELECT count(*) FROM emp;
+
+-- 무한 대댓글 
+
+SELECT * FROM emp;
+
+SELECT * 
+FROM emp
+WHERE mgr is NULL
+
+UNION all
+
+SELECT * FROM emp 
+	WHERE mgr in (SELECT empno 
+			FROM emp
+			WHERE mgr is NULL)
+
+
+SELECT
+    empno, 
+    mgr, 
+    lpad(' ', 4*LEVEL) || ename,
+    LEVEL
+FROM emp
+START WITH mgr IS NULL -- 시작점
+--CONNECT BY PRIOR empno = mgr -- 관계 (순서에 주의)
+CONNECT BY empno != 7782 AND PRIOR empno = mgr -- 관계 (순서에 주의)
+ORDER siblings BY empno;
+
+
+			
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
 
 
 
