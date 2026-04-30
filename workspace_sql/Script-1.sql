@@ -1341,6 +1341,19 @@ START WITH mgr IS NULL -- 시작점
 CONNECT BY empno != 7782 AND PRIOR empno = mgr -- 관계 (순서에 주의)
 ORDER siblings BY empno;
 
+SELECT * FROM emp2;
+
+CREATE TABLE emp2
+AS SELECT * FROM emp;
+
+select * from emp2
+where empno = 7369;
+
+CREATE SEQUENCE seq_emp2
+START WITH 1001;
+
+SELECT seq_emp2.nextval FROM dual;
+
 
 			
 
