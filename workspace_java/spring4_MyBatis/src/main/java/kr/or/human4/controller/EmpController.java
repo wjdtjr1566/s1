@@ -209,6 +209,15 @@ public class EmpController {
   		return "emp";
   	}
     
+    @RequestMapping("/mapper")
+  	public String mapper(Model model) {
+    	List<EmpDTO> list = empService.selectMapper();
+    	
+    	model.addAttribute("list", list);
+    	return "emp";
+    	
+    }
+    
     
 
 
