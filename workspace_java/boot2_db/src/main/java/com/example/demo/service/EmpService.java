@@ -1,0 +1,26 @@
+package com.example.demo.service;
+
+import java.util.List;
+import java.util.Map;
+
+import com.example.demo.dto.EmpDTO;
+
+public interface EmpService {
+	
+	List<EmpDTO> getEmpList();
+	EmpDTO getEmp();
+	Map getEmpMap();
+	EmpDTO selectEmpno(int empno);
+	List selectEname(String ename);
+	List selectJob(String job);
+	List selectJobEname(EmpDTO dto);
+	
+	int insertEmp2(EmpDTO empDTO);
+	int deleteEmp(int empno);
+	int updateEmp(EmpDTO empDTO);
+	EmpDTO selectEmpOne(int empno);
+	List<EmpDTO> search(EmpDTO dto);
+	List<EmpDTO> choice(EmpDTO dto);
+	
+//	List<EmpDTO> selectMapper();
+}

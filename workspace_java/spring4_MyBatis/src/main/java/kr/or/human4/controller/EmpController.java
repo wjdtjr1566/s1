@@ -218,6 +218,26 @@ public class EmpController {
     	
     }
     
+    @RequestMapping("/ajax")
+    public String ajax() {
+
+        return "ajax";
+    }
+    
+    @RequestMapping("/ajax/list")
+    @ResponseBody
+    public List<EmpDTO> ajaxList(EmpDTO empDTO) {
+
+        System.out.println("/ajax/list 실행");
+        System.out.println("empDTO : " + empDTO);
+
+        List<EmpDTO> list = empService.search(empDTO);
+
+        return list;
+    }
+    
+    
+    
     
 
 
